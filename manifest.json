@@ -1,0 +1,17 @@
+{
+    "name": "残業時間表示",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "ジョブカンに残業時間を表示させる",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://ssl.jobcan.jp/employee/attendance*"
+            ],
+            "js": [
+                "js/jquery-3.7.1.min.js",
+                "js/content.js"
+            ]
+        }
+    ]
+}
