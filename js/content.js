@@ -10,7 +10,7 @@ var dateIndex = table.find("th:contains('日付')").index();
 var holidayTypeIndex = table.find("th:contains('休日区分')").index();
 // 総残業時間を0で初期化する
 var totalOverTimeMinutes = 0;
-// 規定労働時間を8時間とする
+// 所定労働時間を8時間とする
 var standardWorkTimeMinutes = 8 * 60;
 // 今日の日付を取得する
 var today = new Date();
@@ -46,7 +46,7 @@ table.find("tbody tr").each(function() {
         // 残業時間をセルに表示する。残業時間がマイナスの場合は、文字色を赤にする
         $(this).find("td").eq(overTimeIndex).text(overTime).css("color", overTimeMinutes < 0 ? "red" : "");
     } else if (!holidayType && !isFuture){
-        // 労働時間のセルに値が入っておらず、休日区分が空の場合は、総残業時間から規定労働時間を引く
+        // 労働時間のセルに値が入っておらず、休日区分が空の場合は、総残業時間から所定労働時間を引く
         totalOverTimeMinutes -= standardWorkTimeMinutes;
         // 労働時間セルに00:00と表示する
         $(this).find("td").eq(workTimeIndex).text("00:00");
