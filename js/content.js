@@ -37,8 +37,8 @@ table.find("tbody tr").each(function() {
         var minute = parseInt(workTimeArray[1]);
         // hh:mmを分に変換する
         var workTimeMinute = hour * 60 + minute;
-        // 残業時間を分で計算する
-        var overTimeMinutes = workTimeMinute - standardWorkTimeMinutes;
+        // 残業時間を分で計算する。休日に障害等で出勤した場合はそのまま残業時間として計上する
+        var overTimeMinutes = holidayType ? workTimeMinute : workTimeMinute - standardWorkTimeMinutes;
         // 総残業時間に残業時間を加算する
         totalOverTimeMinutes += overTimeMinutes;
         // 残業時間をhh:mmという形式に変換する。この時、残業時間がマイナスの場合は、-hh:mmという形式に変換する
